@@ -26,10 +26,6 @@ from fastapi.staticfiles import StaticFiles
 
 
 
-@app.get("/")
-def read_root():
-    return {"message": "Support CRM API is running"}
-
 
 @app.post("/api/tickets", response_model=schemas.TicketCreateOut)
 def create_ticket(ticket: schemas.TicketCreate, db: Session = Depends(get_db)):
