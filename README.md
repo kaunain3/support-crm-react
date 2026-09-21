@@ -130,11 +130,3 @@ def serve_react(full_path: str):
     return FileResponse("frontend/dist/index.html")
 ```
 
-## Known Tradeoffs
-
-- **SQLite on Railway's ephemeral filesystem**: data resets on redeploy. Acceptable for this project's scope; a production version would use a persistent Postgres database.
-- **Ticket ID generation** uses a row count (`TKT-001`, `TKT-002`, ...) for readability, which has a theoretical race condition under concurrent writes at scale — a UUID or DB auto-increment would be more robust for high-concurrency production use.
-- **Frontend build is committed rather than built on the server**, trading a slightly larger repo for a simpler, faster, Node-free deploy. A larger project would typically build in CI instead.
-```
-
-One placeholder to fill in: the "Vanilla JS version of this project" link, if you want to cross-reference your other repo — otherwise just delete that line.
